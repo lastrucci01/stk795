@@ -76,11 +76,11 @@ def fit_norm(data):
     params = {"mu": mu, "std": std}
 
     print("Model: Normal Distribution")
-    print(f"AIC: {AIC_norm:.2f}")
-    print(f"BIC: {BIC_norm:.2f}")
+    print(f"AIC: {AIC_norm:.4f}")
+    print(f"BIC: {BIC_norm:.4f}")
     print("Parameters:")
     for key, value in params.items():
-        print(f"  {key}: {value:.2f}")
+        print(f"  {key}: {value:.4f}")
     print()
 
     return AIC_norm, BIC_norm, params
@@ -116,11 +116,11 @@ def fit_t(data):
     params = {"df": df, "loc": loc, "scale": scale}
 
     print("Model: Student's t-Distribution")
-    print(f"AIC: {AIC_t:.2f}")
-    print(f"BIC: {BIC_t:.2f}")
+    print(f"AIC: {AIC_t:.4f}")
+    print(f"BIC: {BIC_t:.4f}")
     print("Parameters:")
     for key, value in params.items():
-        print(f"  {key}: {value:.2f}")
+        print(f"  {key}: {value:.4f}")
     print()
 
     return AIC_t, BIC_t, params
@@ -153,13 +153,13 @@ def fit_gmm(data, n_components=3):
     BIC_gmm = gmm.bic(data_reshaped)
     
     print(f"Model: {n_components} Component Gaussian Mixture Model")
-    print(f"AIC: {AIC_gmm:.2f}")
-    print(f"BIC: {BIC_gmm:.2f}")
+    print(f"AIC: {AIC_gmm:.4f}")
+    print(f"BIC: {BIC_gmm:.4f}")
     print("\nParameters:")
     print(f"{'Component':<10}{'Weight':<10}{'Mean':<10}{'Variance':<10}")
     print("-" * 40)
     for i, (weight, mean, cov) in enumerate(zip(gmm.weights_, gmm.means_, gmm.covariances_)):
-        print(f"{i+1:<10}{weight:<10.2f}{mean[0]:<10.2f}{cov[0][0]:<10.2f}")
+        print(f"{i+1:<10}{weight:<10.4f}{mean[0]:<10.4f}{cov[0][0]:<10.4f}")
     print()
     return AIC_gmm, BIC_gmm, gmm
 
